@@ -1,5 +1,5 @@
 import React from 'react';
-import {store} from '../redux/redusers';
+import {FilterLink, getVisibleTodos, store} from '../redux/redusers';
 
 let nextTodoId = 0;
 
@@ -10,6 +10,15 @@ export class TodoApp extends React.Component {
     }
 
     render() {
+        const {todos, visibilityFilter } = this.props;
+        // console.log(this)
+        const visibleTodos = getVisibleTodos(
+            todos,
+            visibilityFilter
+        );
+        // console.log(todos)
+        // console.log(visibilityFilter)
+        // console.log(visibleTodos)
         return (
             <div>
                 <input ref={this.input}/>
@@ -26,7 +35,7 @@ export class TodoApp extends React.Component {
                     Add Todo
                 </button>
                 <ul>
-                    {this.props.todos.map(
+                    {visibleTodos.map(
                         todo =>
                             <li
                                 key={todo.id}
@@ -47,6 +56,30 @@ export class TodoApp extends React.Component {
                             </li>
                     )}
                 </ul>
+                <p>
+                    Show:
+                    {' '}
+                    <FilterLink
+                        filter={'SHOW_ALL'}
+                        currentFilter={visibilityFilter}
+                    >
+                        All
+                    </FilterLink>
+                    {' '}
+                    <FilterLink
+                        filter={'SHOW_ACTIVE'}
+                        currentFilter={visibilityFilter}
+                    >
+                        Active
+                    </FilterLink>
+                    {' '}
+                    <FilterLink
+                        filter={'SHOW_COMPLETED'}
+                        currentFilter={visibilityFilter}
+                    >
+                        Completed
+                    </FilterLink>
+                </p>
             </div>
         )
     }

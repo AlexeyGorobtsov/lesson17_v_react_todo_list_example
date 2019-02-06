@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import {createStore} from "redux";
+import React from 'react';
 
 
 const todo = (state, action) => {
@@ -58,3 +59,41 @@ const todoApp = combineReducers({
 });
 
 export const store = createStore(todoApp);
+
+export const FilterLink = ({
+    filter,
+    currentFilter,
+    children
+}) => {
+    if (filter === currentFilter) {
+        return <span>{children}</span>
+    }
+    return (
+        <a
+            href={'#'}
+            onClick={e => {
+                e.preventDefault();
+                store.dispatch({
+                    type:'SET_VISIBILITY_FILTER',
+                    filter
+                })
+            }}
+        >
+            {children}
+        </a>
+    )
+};
+
+export const getVisibleTodos = (
+    todos,
+    filter
+) => {
+    switch(filter) {
+        case 'SHOW_ALL':
+            return todos;
+        case 'SHOW_COMPLETED':
+            return todos.filter(t => t.completed);
+        case 'SHOW_ACTIVE':
+            return todos.filter(t => !t.completed);
+    }
+};
