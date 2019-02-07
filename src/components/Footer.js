@@ -1,31 +1,22 @@
 import React from 'react';
-import {FilterLink} from "../redux/redusers";
-
-export const Footer = ({
-    visibilityFilter,
-    onFilterClick
-}) => (
+// import {FilterLink} from "../redux/redusers";
+import { FilterLink } from '../containers/FilterLink'
+export const Footer = () => (
     <p>
         <FilterLink
             filter='SHOW_ALL'
-            currentFilter={visibilityFilter}
-            onClick={onFilterClick}
         >
             All
         </FilterLink>
         {', '}
         <FilterLink
             filter='SHOW_ACTIVE'
-            currentFilter={visibilityFilter}
-            onClick={onFilterClick}
         >
             Active
         </FilterLink>
         {', '}
         <FilterLink
             filter='SHOW_COMPLETED'
-            currentFilter={visibilityFilter}
-            onClick={onFilterClick}
         >
             Completed
         </FilterLink>
