@@ -1,7 +1,7 @@
 import React from 'react';
 import {FilterLink, getVisibleTodos, store} from '../redux/redusers';
 
-let nextTodoId = 0;
+export let nextTodoId = 0;
 
 export class TodoApp extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ export class TodoApp extends React.Component {
 
     render() {
         const {todos, visibilityFilter } = this.props;
-        // console.log(this)
+        console.log(this);
         const visibleTodos = getVisibleTodos(
             todos,
             visibilityFilter

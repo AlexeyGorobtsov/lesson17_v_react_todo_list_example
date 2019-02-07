@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {TodoApp} from "./components/TodoApp";
+// import {TodoApp} from "./components/TodoApp";
+import {TodoApp} from "./containers/TodoApp";
 import {store} from './redux/redusers'
 
 // ReactDOM.render(<App />, document.getElementById('root'));
