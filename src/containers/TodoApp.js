@@ -4,6 +4,7 @@ import {FilterLink, getVisibleTodos, store} from "../redux/redusers";
 import {TodoList} from "../components/TodoList";
 import {AddTodo} from "../components/AddTodo";
 import {Footer} from "../components/Footer";
+import {VisibleTodoList} from "./VisibleTodoList";
 
 let idCount = 0;
 
@@ -34,31 +35,9 @@ export class TodoApp extends React.Component {
         );
         return (
             <div>
-                <AddTodo
-                    onAddClick={ text=>
-                        store.dispatch({
-                            type: 'ADD_TODO',
-                            text: text,
-                            id: idCount++
-                        })
-                    }
-                />
-                <TodoList
-                    todos={visibleTodos}
-                    onTodoClick={id => store.dispatch({
-                        type: 'TOGGLE_TODO',
-                        id
-                    })}
-                />
-                <Footer
-                    visibilityFilter={visibilityFilter}
-                    onFilterClick={filter =>
-                    store.dispatch({
-                        type: 'SET_VISIBILITY_FILTER',
-                        filter
-                    })}
-                />
-
+                <AddTodo />
+                <VisibleTodoList />
+                <Footer />
             </div>
 
         )

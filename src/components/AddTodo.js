@@ -1,4 +1,7 @@
 import React from 'react';
+import { store } from "../redux/redusers";
+
+let nextTodoId = 0;
 
 export const AddTodo = ({
     onAddClick
@@ -12,7 +15,11 @@ export const AddTodo = ({
             <button
                 onClick={
                     () => {
-                        onAddClick(input.value);
+                        store.dispatch({
+                            type: 'ADD_TODO',
+                            id: nextTodoId++,
+                            text: input.value
+                        });
                         input.value = '';
                     }
                 }
