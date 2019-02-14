@@ -4,7 +4,7 @@ import { store } from "../redux/redusers";
 let nextTodoId = 0;
 
 export const AddTodo = ({
-    onAddClick
+    store
 }) => {
     let input;
     return(

@@ -5,7 +5,8 @@ import {TodoList} from "../components/TodoList";
 export class VisibleTodoList extends React.Component {
 
     componentDidMount() {
-        this.unsubscribe = store.subscribe(() =>
+        const { store } = this.props;
+         this.unsubscribe = store.subscribe(() =>
         this.forceUpdate())
     }
 
@@ -14,6 +15,7 @@ export class VisibleTodoList extends React.Component {
     }
 
     render() {
+        const { store } = this.props;
         const props = this.props;
         const state = store.getState();
 

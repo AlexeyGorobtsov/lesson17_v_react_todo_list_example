@@ -53,7 +53,7 @@ const visibilityFilter = (
     }
 };
 
-const todoApp = combineReducers({
+export const todoApp = combineReducers({
     todos,
     visibilityFilter
 });

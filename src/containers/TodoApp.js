@@ -8,38 +8,46 @@ import {VisibleTodoList} from "./VisibleTodoList";
 
 let idCount = 0;
 
-export class TodoApp extends React.Component {
-    constructor(props) {
-        super(props);
-        this.input  = React.createRef();
-        this.handleAddTodo = this.handleAddTodo.bind(this);
-    }
+// export class TodoApp extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.input  = React.createRef();
+//         this.handleAddTodo = this.handleAddTodo.bind(this);
+//     }
+//
+//     handleAddTodo() {
+//         store.dispatch({
+//             type: 'ADD_TODO',
+//             text: this.input.current.value,
+//             id: idCount++
+//         });
+//         this.input.current.value = '';
+//     }
+//
+//     render() {
+//         const {
+//             todos,
+//             visibilityFilter
+//         } = this.props;
+//         const visibleTodos = getVisibleTodos(
+//             todos,
+//             visibilityFilter
+//         );
+//         return (
+//             <div>
+//                 <AddTodo />
+//                 <VisibleTodoList />
+//                 <Footer />
+//             </div>
+//
+//         )
+//     }
+// }
 
-    handleAddTodo() {
-        store.dispatch({
-            type: 'ADD_TODO',
-            text: this.input.current.value,
-            id: idCount++
-        });
-        this.input.current.value = '';
-    }
-
-    render() {
-        const {
-            todos,
-            visibilityFilter
-        } = this.props;
-        const visibleTodos = getVisibleTodos(
-            todos,
-            visibilityFilter
-        );
-        return (
-            <div>
-                <AddTodo />
-                <VisibleTodoList />
-                <Footer />
-            </div>
-
-        )
-    }
-}
+export const TodoApp = ({ store }) => (
+    <div>
+        <AddTodo store={store} />
+        <VisibleTodoList store={store} />
+        <Footer store={store} />
+    </div>
+);

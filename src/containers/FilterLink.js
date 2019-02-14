@@ -7,6 +7,7 @@ export class FilterLink extends React.Component {
 
 
     componentDidMount() {
+        const { store } = this.props;
         this.unsubscribe = store.subscribe(() => this.forceUpdate())
     }
 
@@ -17,6 +18,7 @@ export class FilterLink extends React.Component {
     render() {
         const props = this.props;
         console.log(props);
+        const { store } = props;
         const state = store.getState();
 
         return(
