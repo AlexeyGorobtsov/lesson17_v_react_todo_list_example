@@ -1,9 +1,10 @@
 import React from 'react';
 import { store } from "../redux/redusers";
+import PropTypes from 'prop-types';
 
 let nextTodoId = 0;
 
-export const AddTodo = ({
+export const AddTodo = (props, {
     store
 }) => {
     let input;
@@ -29,3 +30,7 @@ export const AddTodo = ({
         </div>
     )
 };
+
+AddTodo.contextTypes = {
+    store: PropTypes.object
+}

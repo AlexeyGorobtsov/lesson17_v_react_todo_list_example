@@ -1,11 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {getVisibleTodos, store} from "../redux/redusers";
 import {TodoList} from "../components/TodoList";
 
 export class VisibleTodoList extends React.Component {
 
     componentDidMount() {
-        const { store } = this.props;
+        console.log(this)
+        const { store } = this.context;
          this.unsubscribe = store.subscribe(() =>
         this.forceUpdate())
     }
@@ -15,7 +18,7 @@ export class VisibleTodoList extends React.Component {
     }
 
     render() {
-        const { store } = this.props;
+        const { store } = this.context;
         const props = this.props;
         const state = store.getState();
 
@@ -36,4 +39,8 @@ export class VisibleTodoList extends React.Component {
             />
         )
     }
+}
+
+VisibleTodoList.contextTypes = {
+    store: PropTypes.object
 }
